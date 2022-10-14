@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <div class="row d-flex flex-column align-items-center mt-2">
+        <div class="col-sm-12 col-md-12 col-lg-8">
+            <div class="d-flex justify-content-center">
+                <img src="../static/assets/img/3.jpg" alt="" class="img-thumbnail">
+            </div>
+            <div class="fs-4 fw-bold text-center mt-2">Employees of Company</div>
+            <div class="d-flex mt-3 d-flex justify-content-end">
+                <div class="input-group w-50">
+                  <button onclick="searchEployee();" class="input-group-text">Search</button>
+                  <input id="search" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+            </div>
+            <table class="table table-sm mt-4">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">Level</th>
+              <th scope="col">Votes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for character in characters %}
+                <tr>
+                  <th scope="row">{{ character[0] }}</th>
+                  <td>{{ character[1] }}</td>
+                  <td>{{ character[2] }}</td>
+                  <td>{{ character[3] }}</td>
+                  <td>{{ character[4] }}</td>
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        </div>
+    </div>
+    <script>
+        function searchEployee(){
+            var search = document.getElementById("search").value;
+            location.replace("/about?search="+search);
+        }
+    </script>
+{% endblock body %}
